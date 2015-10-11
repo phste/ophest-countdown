@@ -1,7 +1,7 @@
-var Segment, blind, segment, start, stop;
+var Segment, blind, doBlind, segment, start, stop;
 
 Segment = (function() {
-  var $colon, $minutes, $seconds, $tminutes, $tseconds, blinkColon, classMap, countdown, refreshSegment, self, stepCountdown, timeout;
+  var $colon, $minutes, $seconds, $tminutes, $tseconds, blinkColon, classMap, countdown, interval, refreshSegment, self, stepCountdown, timeout;
 
   classMap = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", ""];
 
@@ -16,6 +16,8 @@ Segment = (function() {
   $colon = null;
 
   countdown = null;
+
+  interval = null;
 
   timeout = null;
 
@@ -52,12 +54,13 @@ Segment = (function() {
     refreshSegment($tminutes, 10);
     refreshSegment($minutes, 10);
     refreshSegment($tseconds, 10);
-    return refreshSegment($seconds, 10);
+    refreshSegment($seconds, 10);
+    return $colon.removeClass("active");
   };
 
   blinkColon = function() {
     $colon.removeClass("active");
-    return setTimeout((function() {
+    return timeout = setTimeout((function() {
       return $colon.addClass("active");
     }), 500);
   };
@@ -65,7 +68,7 @@ Segment = (function() {
   stepCountdown = function() {
     var minutes, seconds;
     if (countdown < 0) {
-      clearInterval(timeout);
+      clearInterval(interval);
       return;
     }
     minutes = Math.floor(countdown / 60);
@@ -82,11 +85,13 @@ Segment = (function() {
     }
     countdown = seconds;
     stepCountdown();
-    timeout = window.setInterval(stepCountdown, 1000);
+    interval = window.setInterval(stepCountdown, 1000);
   };
 
   Segment.prototype.clearCountdown = function() {
-    return clearInterval(timeout);
+    clearInterval(interval);
+    clearTimeout(timeout);
+    return this.clearDisplay();
   };
 
   Segment.prototype.pauseContinue = function() {
@@ -105,18 +110,21 @@ Segment = (function() {
 
 segment = new Segment;
 
+doBlind = true;
+
 blind = function() {
   $("#blind").fadeIn(100);
   return $('#blind').fadeOut(100);
 };
 
 start = function() {
-  blind();
+  if (doBlind) {
+    blind();
+  }
   return segment.startCountdown(900);
 };
 
 stop = function() {
-  segment.clearDisplay();
   return segment.clearCountdown();
 };
 
@@ -128,5 +136,7 @@ $(document).keypress(function(e) {
       return stop();
     case 32:
       return segment.pauseContinue();
+    case 100:
+      return doBlind = !doBlind;
   }
 });

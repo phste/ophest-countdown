@@ -1,6 +1,13 @@
 ## Basic 7-segment CSS/Javascript countdown
 This project was built for a party.
 
+Countdown is controllable via keyboard (because needed in this case):
+
+r = Start countdown of fifteen minutes
+c = Clear countdown
+space = Pause/Continue countdown
+d = Deactive/Active flashing of screen with countdown start
+(Flashing was needed to attract attention onto the countdown)
 Copyright (c) 2015 Phillipp Stengel
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

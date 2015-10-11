@@ -8,6 +8,7 @@ class Segment
   $seconds = null
   $colon = null
   countdown = null
+  interval = null
   timeout = null
   self = null
 
@@ -39,15 +40,16 @@ class Segment
     refreshSegment($minutes, 10)
     refreshSegment($tseconds, 10)
     refreshSegment($seconds, 10)
+    $colon.removeClass("active")
 
   blinkColon = () ->
     $colon.removeClass("active")
-    setTimeout((() ->
+    timeout = setTimeout((() ->
       $colon.addClass("active")), 500)
 
   stepCountdown = () ->
     if countdown < 0
-      clearInterval(timeout)
+      clearInterval(interval)
       return
 
     minutes = Math.floor(countdown / 60)
@@ -63,11 +65,13 @@ class Segment
 
     countdown = seconds
     stepCountdown()
-    timeout = window.setInterval(stepCountdown, 1000)
+    interval = window.setInterval(stepCountdown, 1000)
     return
 
   clearCountdown: () ->
-    clearInterval(timeout)
+    clearInterval(interval)
+    clearTimeout(timeout)
+    @clearDisplay()
 
   pauseContinue: () ->
     if !@paused
@@ -79,16 +83,19 @@ class Segment
 
 segment = new Segment
 
+doBlind = true
+
 blind = () ->
   $("#blind").fadeIn(100);
   $('#blind').fadeOut(100);
 
 start = () ->
-  blind()
+  if (doBlind)
+     blind()
+
   segment.startCountdown(900)
 
 stop = () ->
-  segment.clearDisplay()
   segment.clearCountdown()
 
 $(document).keypress((e) ->
@@ -96,4 +103,5 @@ $(document).keypress((e) ->
     when 114 then start()
     when 99 then stop()
     when 32 then segment.pauseContinue()
+    when 100 then doBlind = !doBlind
 )
