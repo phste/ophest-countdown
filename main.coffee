@@ -6,7 +6,8 @@ class Segment
   $minutes = null
   $tseconds = null
   $seconds = null
-  countdown = null;
+  $colon = null
+  countdown = null
   timeout = null
   self = null
 
@@ -15,6 +16,7 @@ class Segment
     $minutes = $("#minutes")
     $tseconds = $("#tens-seconds")
     $seconds = $("#seconds")
+    $colon = $(".colon > .colon")
     self = @
     @paused = false
 
@@ -38,6 +40,11 @@ class Segment
     refreshSegment($tseconds, 10)
     refreshSegment($seconds, 10)
 
+  blinkColon = () ->
+    $colon.removeClass("active")
+    setTimeout((() ->
+      $colon.addClass("active")), 500)
+
   stepCountdown = () ->
     if countdown < 0
       clearInterval(timeout)
@@ -46,6 +53,7 @@ class Segment
     minutes = Math.floor(countdown / 60)
     seconds = countdown - minutes*60
     self.setDisplay(minutes, seconds)
+    blinkColon()
     countdown--
 
   startCountdown: (seconds) ->
@@ -71,7 +79,12 @@ class Segment
 
 segment = new Segment
 
+blind = () ->
+  $("#blind").fadeIn(100);
+  $('#blind').fadeOut(100);
+
 start = () ->
+  blind()
   segment.startCountdown(900)
 
 stop = () ->

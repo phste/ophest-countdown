@@ -1,7 +1,7 @@
-var Segment, segment, start, stop;
+var Segment, blind, segment, start, stop;
 
 Segment = (function() {
-  var $minutes, $seconds, $tminutes, $tseconds, classMap, countdown, refreshSegment, self, stepCountdown, timeout;
+  var $colon, $minutes, $seconds, $tminutes, $tseconds, blinkColon, classMap, countdown, refreshSegment, self, stepCountdown, timeout;
 
   classMap = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", ""];
 
@@ -12,6 +12,8 @@ Segment = (function() {
   $tseconds = null;
 
   $seconds = null;
+
+  $colon = null;
 
   countdown = null;
 
@@ -24,6 +26,7 @@ Segment = (function() {
     $minutes = $("#minutes");
     $tseconds = $("#tens-seconds");
     $seconds = $("#seconds");
+    $colon = $(".colon > .colon");
     self = this;
     this.paused = false;
   }
@@ -52,6 +55,13 @@ Segment = (function() {
     return refreshSegment($seconds, 10);
   };
 
+  blinkColon = function() {
+    $colon.removeClass("active");
+    return setTimeout((function() {
+      return $colon.addClass("active");
+    }), 500);
+  };
+
   stepCountdown = function() {
     var minutes, seconds;
     if (countdown < 0) {
@@ -61,6 +71,7 @@ Segment = (function() {
     minutes = Math.floor(countdown / 60);
     seconds = countdown - minutes * 60;
     self.setDisplay(minutes, seconds);
+    blinkColon();
     return countdown--;
   };
 
@@ -94,7 +105,13 @@ Segment = (function() {
 
 segment = new Segment;
 
+blind = function() {
+  $("#blind").fadeIn(100);
+  return $('#blind').fadeOut(100);
+};
+
 start = function() {
+  blind();
   return segment.startCountdown(900);
 };
 
