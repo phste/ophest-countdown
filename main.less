@@ -1,0 +1,269 @@
+// out: main.css , sourcemap: false, compress: false
+
+@base-border-color: #0b0b0b;
+@active-border-color: red;
+@size: 100px;
+@spacing: 5px;
+@border: 20px;
+@border-middle: 15px;
+
+body {
+  background-color: black;
+}
+
+.segment {
+  position: relative;
+
+  div {
+    position: absolute;
+    border: @border solid @base-border-color;
+  }
+
+  .a, .bottom, .top, .g {
+      width: @size;
+  }
+
+  .b, .c, .e, .f {
+    height: @size;
+  }
+
+  .a {
+    left: @spacing;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  .b, .c {
+    top: @spacing;
+  }
+
+  .b {
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  .c {
+    left: @size + 2 * @spacing;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  .d {
+    top: @size + 3 * @spacing + @spacing/2;
+    left: 2 * @spacing;
+    border: 0;
+
+    .top {
+      border-width: @border-middle;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-top-color: transparent;
+    }
+
+    .bottom {
+      position: absolute;
+      top: @border-middle * 2;
+      border-width: @border-middle;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+    }
+  }
+
+  .e, .f {
+    top: @size + 10 * @spacing;
+  }
+
+  .e {
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  .f {
+    left: @size + 2 * @spacing;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  .g {
+    top: 2 * @size + 11 * @spacing;
+    left: @spacing;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+  }
+}
+
+.left.colon {
+  width: 2*@border;
+}
+
+.colon {
+  position: relative;
+  .point {
+    position: absolute;
+    width: @border;
+    height: @border;
+    background-color: @base-border-color;
+  }
+
+  .point.a {
+    top: @size;
+  }
+
+  .point.b {
+    top: @size + 4*@border;
+  }
+}
+
+.colon.active {
+  .point {
+    background-color: @active-border-color;
+  }
+}
+
+.a-active() {
+  .a {
+    border-top-color: @active-border-color;
+  }
+}
+
+.b-active() {
+  .b {
+    border-left-color: @active-border-color;
+  }
+}
+
+.c-active() {
+  .c {
+    border-right-color: @active-border-color;
+  }
+}
+
+.d-active() {
+  .d .top {
+    border-bottom-color: @active-border-color;
+  }
+
+  .d .bottom {
+    border-top-color: @active-border-color;
+  }
+}
+
+.e-active() {
+  .e {
+    border-left-color: @active-border-color;
+  }
+}
+
+.f-active() {
+  .f {
+    border-right-color: @active-border-color;
+  }
+}
+
+.g-active() {
+  .g {
+    border-bottom-color: @active-border-color;
+  }
+}
+
+.zero > .segment {
+  .a-active();
+  .b-active();
+  .c-active();
+  .e-active();
+  .f-active();
+  .g-active();
+}
+
+.one > .segment {
+  .c-active();
+  .f-active();
+}
+
+.two > .segment {
+  .a-active();
+  .c-active();
+  .d-active();
+  .e-active();
+  .g-active();
+}
+
+.three > .segment {
+  .a-active();
+  .c-active();
+  .d-active();
+  .f-active();
+  .g-active();
+}
+
+.four > .segment {
+  .b-active();
+  .c-active();
+  .d-active();
+  .f-active();
+}
+
+.five > .segment {
+  .a-active();
+  .b-active();
+  .d-active();
+  .f-active();
+  .g-active();
+}
+
+.six > .segment {
+  .a-active();
+  .b-active();
+  .d-active();
+  .e-active();
+  .f-active();
+  .g-active();
+}
+
+.seven > .segment {
+  .a-active();
+  .c-active();
+  .f-active();
+}
+
+.eight > .segment {
+  .a-active();
+  .b-active();
+  .c-active();
+  .d-active();
+  .e-active();
+  .f-active();
+  .g-active();
+}
+
+.nine > .segment {
+  .a-active();
+  .b-active();
+  .c-active();
+  .d-active();
+  .f-active();
+  .g-active();
+}
+
+.left {
+  float: left;
+  width: @size + 15*@spacing;
+  height: 3*@size;
+}
+
+#countdown {
+  position: absolute;
+  width: 800px;
+  height: 3*@size;
+  top: 50%;
+  left: 50%;
+  margin-left: -400px;
+  margin-top: -150px;
+}

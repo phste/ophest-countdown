@@ -1,0 +1,287 @@
+body {
+  background-color: black;
+}
+.segment {
+  position: relative;
+}
+.segment div {
+  position: absolute;
+  border: 20px solid #0b0b0b;
+}
+.segment .a,
+.segment .bottom,
+.segment .top,
+.segment .g {
+  width: 100px;
+}
+.segment .b,
+.segment .c,
+.segment .e,
+.segment .f {
+  height: 100px;
+}
+.segment .a {
+  left: 5px;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+.segment .b,
+.segment .c {
+  top: 5px;
+}
+.segment .b {
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+.segment .c {
+  left: 110px;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+.segment .d {
+  top: 117.5px;
+  left: 10px;
+  border: 0;
+}
+.segment .d .top {
+  border-width: 15px;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-top-color: transparent;
+}
+.segment .d .bottom {
+  position: absolute;
+  top: 30px;
+  border-width: 15px;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+.segment .e,
+.segment .f {
+  top: 150px;
+}
+.segment .e {
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+.segment .f {
+  left: 110px;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+.segment .g {
+  top: 255px;
+  left: 5px;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-top-color: transparent;
+}
+.left.colon {
+  width: 40px;
+}
+.colon {
+  position: relative;
+}
+.colon .point {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #0b0b0b;
+}
+.colon .point.a {
+  top: 100px;
+}
+.colon .point.b {
+  top: 180px;
+}
+.colon.active .point {
+  background-color: red;
+}
+.zero > .segment .a {
+  border-top-color: red;
+}
+.zero > .segment .b {
+  border-left-color: red;
+}
+.zero > .segment .c {
+  border-right-color: red;
+}
+.zero > .segment .e {
+  border-left-color: red;
+}
+.zero > .segment .f {
+  border-right-color: red;
+}
+.zero > .segment .g {
+  border-bottom-color: red;
+}
+.one > .segment .c {
+  border-right-color: red;
+}
+.one > .segment .f {
+  border-right-color: red;
+}
+.two > .segment .a {
+  border-top-color: red;
+}
+.two > .segment .c {
+  border-right-color: red;
+}
+.two > .segment .d .top {
+  border-bottom-color: red;
+}
+.two > .segment .d .bottom {
+  border-top-color: red;
+}
+.two > .segment .e {
+  border-left-color: red;
+}
+.two > .segment .g {
+  border-bottom-color: red;
+}
+.three > .segment .a {
+  border-top-color: red;
+}
+.three > .segment .c {
+  border-right-color: red;
+}
+.three > .segment .d .top {
+  border-bottom-color: red;
+}
+.three > .segment .d .bottom {
+  border-top-color: red;
+}
+.three > .segment .f {
+  border-right-color: red;
+}
+.three > .segment .g {
+  border-bottom-color: red;
+}
+.four > .segment .b {
+  border-left-color: red;
+}
+.four > .segment .c {
+  border-right-color: red;
+}
+.four > .segment .d .top {
+  border-bottom-color: red;
+}
+.four > .segment .d .bottom {
+  border-top-color: red;
+}
+.four > .segment .f {
+  border-right-color: red;
+}
+.five > .segment .a {
+  border-top-color: red;
+}
+.five > .segment .b {
+  border-left-color: red;
+}
+.five > .segment .d .top {
+  border-bottom-color: red;
+}
+.five > .segment .d .bottom {
+  border-top-color: red;
+}
+.five > .segment .f {
+  border-right-color: red;
+}
+.five > .segment .g {
+  border-bottom-color: red;
+}
+.six > .segment .a {
+  border-top-color: red;
+}
+.six > .segment .b {
+  border-left-color: red;
+}
+.six > .segment .d .top {
+  border-bottom-color: red;
+}
+.six > .segment .d .bottom {
+  border-top-color: red;
+}
+.six > .segment .e {
+  border-left-color: red;
+}
+.six > .segment .f {
+  border-right-color: red;
+}
+.six > .segment .g {
+  border-bottom-color: red;
+}
+.seven > .segment .a {
+  border-top-color: red;
+}
+.seven > .segment .c {
+  border-right-color: red;
+}
+.seven > .segment .f {
+  border-right-color: red;
+}
+.eight > .segment .a {
+  border-top-color: red;
+}
+.eight > .segment .b {
+  border-left-color: red;
+}
+.eight > .segment .c {
+  border-right-color: red;
+}
+.eight > .segment .d .top {
+  border-bottom-color: red;
+}
+.eight > .segment .d .bottom {
+  border-top-color: red;
+}
+.eight > .segment .e {
+  border-left-color: red;
+}
+.eight > .segment .f {
+  border-right-color: red;
+}
+.eight > .segment .g {
+  border-bottom-color: red;
+}
+.nine > .segment .a {
+  border-top-color: red;
+}
+.nine > .segment .b {
+  border-left-color: red;
+}
+.nine > .segment .c {
+  border-right-color: red;
+}
+.nine > .segment .d .top {
+  border-bottom-color: red;
+}
+.nine > .segment .d .bottom {
+  border-top-color: red;
+}
+.nine > .segment .f {
+  border-right-color: red;
+}
+.nine > .segment .g {
+  border-bottom-color: red;
+}
+.left {
+  float: left;
+  width: 175px;
+  height: 300px;
+}
+#countdown {
+  position: absolute;
+  width: 800px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  margin-left: -400px;
+  margin-top: -150px;
+}
